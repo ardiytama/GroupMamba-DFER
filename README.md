@@ -58,7 +58,9 @@ pip install -r requirements.txt
 
 Step 3: Install Selective Scan CUDA Kernel (from VMamba)
 ```bash
-cd kernels/selective_scan && pip install .
+git clone https://github.com/MzeroMiko/VMamba.git
+cd VMamba/kernels/selective_scan
+pip install .
 ```
 
 ### 2. Dataset Preparation
