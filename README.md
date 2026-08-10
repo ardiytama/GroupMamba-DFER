@@ -41,7 +41,7 @@ Recognizing emotion from continuous, unconstrained video is bottlenecked by two 
 
 Step 1: Clone the repository
 ```bash
-git clone https://github.com/<your-username>/GM-GReFEL.git
+git clone https://github.com/ardiytama/GM-GReFEL.git
 cd GM-GReFEL
 ```
 
