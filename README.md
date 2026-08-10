@@ -27,10 +27,14 @@ Recognizing emotion from continuous, unconstrained video is bottlenecked by two 
 ### Overall Workflow
 ![Overall Workflow Diagram](assets/architecture/overall_workflow.png)
 
-### Detailed Architecture & VSSS Block
+### Detailed Architecture
 <div align="center">
-  <img src="assets/architecture/workflow_diagram.png" width="45%" />
-  <img src="assets/architecture/workflow_vsss.png" width="45%" />
+  <img src="assets/architecture/workflow_diagram.png" width="100%" />
+</div>
+
+### VSSS Block
+<div align="center">
+  <img src="assets/architecture/workflow_vsss.png" width="60%" />
 </div>
 
 ---
