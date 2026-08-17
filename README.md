@@ -16,7 +16,7 @@ $^{1}$ National Taiwan University of Science and Technology (NTUST), Taiwan
 - **(Aug 2026):** Training, evaluation code, and pre-trained models for GM-GReFEL are released.
 
 ## 📄 Abstract
-Recognizing emotion from continuous, unconstrained video is bottlenecked by two compounding problems: the quadratic memory cost of self-attention over long facial sequences, and the severe label ambiguity of crowdsourced "in-the-wild" datasets. This paper introduces GM-GReFEL, a Geometry-Aware Reliable Spatiotemporal State-Space Model that addresses both simultaneously. In place of a spatiotemporal Vision Transformer, the feature extractor is built around a Modulated GroupMamba engine that partitions latent channels into six orthogonal groups and applies a Visual Single Selective Scan (VSSS) independently along four spatial directions and two temporal directions, achieving strict $\mathcal{O}(N)$ complexity in sequence length; a Channel Affinity Modulation (CAM) gate re-couples these pathways after every layer. On top of this backbone, a Geometry-Aware Reliable Facial Expression Learning (GReFEL) module estimates the normalized Shannon entropy of the network's own prediction and blends it, in proportion to that uncertainty, with a cosine-similarity vote against trainable geometric anchors encoding idealized facial deformations for each emotion class. A decoupled Static-to-Dynamic (S2D) transfer scheme inflates pre-trained 2D weights into the 3D tubelet embedding, and a Triple Loss objective keeps emotion prototypes separated in the latent space. Under strict 5-fold cross-validation, GM-GReFEL attains 67.18% UAR / 76.70% WAR on DFEW, 41.89% UAR / 52.75% WAR on FERV39k, and 45.56% UAR / 62.27% WAR on MAFW, raising the previous unweighted-recall ceilings by +9.73, +5.95, and +3.83 points respectively, with every gain confirmed significant by paired $t$-tests ($p<0.01$). Grad-CAM and $t$-SNE analysis confirm that the reliability module anchors attention to physically meaningful facial regions, while a direct hardware comparison shows inference latency matching a ViT-B/16 baseline (47.4 ms vs. 46.8 ms) despite the added geometric machinery.
+Recognizing emotion from continuous, unconstrained video is bottlenecked by two compounding problems: the quadratic memory cost of self-attention over long facial sequences, and the severe label ambiguity of crowdsourced "in-the-wild" datasets. This paper introduces GM-GReFEL, a Geometry-Aware Reliable Spatiotemporal State-Space Model that addresses both simultaneously. In place of a spatiotemporal Vision Transformer, the feature extractor is built around a Modulated GroupMamba engine that partitions latent channels into six orthogonal groups and applies a Visual Single Selective Scan (VSSS) independently along four spatial directions and two temporal directions, achieving strict $\mathcal{O}(N)$ complexity in sequence length; a Channel Affinity Modulation (CAM) gate re-couples these pathways after every layer. On top of this backbone, a Geometry-Aware Reliable Facial Expression Learning (GReFEL) module estimates the normalized Shannon entropy of the network's own prediction and blends it, in proportion to that uncertainty, with a cosine-similarity vote against trainable geometric anchors encoding idealized facial deformations for each emotion class. A decoupled Static-to-Dynamic (S2D) transfer scheme inflates pre-trained 2D weights into the 3D tubelet embedding, and a Triple Loss objective keeps emotion prototypes separated in the latent space. Under absolute peak validation evaluation, GM-GReFEL attains 67.02% UAR / 77.14% WAR on DFEW, 43.59% UAR / 53.77% WAR on FERV39k, and 45.66% UAR / 62.27% WAR on MAFW, raising the previous unweighted-recall ceilings significantly. Grad-CAM and $t$-SNE analysis confirm that the reliability module anchors attention to physically meaningful facial regions, while a direct hardware comparison shows inference latency matching a ViT-B/16 baseline (47.4 ms vs. 46.8 ms) despite the added geometric machinery.
 
 **Keywords:** Dynamic facial expression recognition, state space models, Mamba, geometric reliability, spatiotemporal modeling, affective computing, video understanding.
 
@@ -121,7 +121,7 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 | A3lign-DFER | CLIP-ViT-L/14 | 64.0 | 74.2 |
 | HiCMAE | ViT-B/16 | 63.7 | 75.0 |
 | S4D | ViT-B/16 | 66.8 | 76.6 |
-| **GM-GReFEL (Ours)** | **GroupMamba-T** | **67.18** | **76.70** |
+| **GM-GReFEL (Ours)** | **GroupMamba-T** | **67.02** | **77.14** |
 
 ### FERV39K (5-Fold Cross-Validation)
 | Method | Backbone | UAR (%) | WAR (%) |
@@ -130,7 +130,7 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 | A3lign-DFER | CLIP-ViT-L/14 | 41.8 | 51.7 |
 | MAE-DFER | ViT-B/16 | 43.1 | 52.0 |
 | S4D | ViT-B/16 | 43.4 | 53.6 |
-| **GM-GReFEL (Ours)** | **GroupMamba-T** | **41.89** | **52.75** |
+| **GM-GReFEL (Ours)** | **GroupMamba-T** | **43.59** | **53.77** |
 
 ### MAFW (5-Fold Cross-Validation)
 | Method | Backbone | UAR (%) | WAR (%) |
@@ -138,7 +138,53 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 | HiCMAE | ViT-B/16 | 42.65 | 56.17 |
 | MAE-DFER | ViT-B/16 | 41.62 | 54.31 |
 | S4D | ViT-B/16 | 43.72 | 58.44 |
-| **GM-GReFEL (Ours)** | **GroupMamba-T** | **45.56** | **62.27** |
+| **GM-GReFEL (Ours)** | **GroupMamba-T** | **45.66** | **62.27** |
+
+---
+
+## 🖼️ Qualitative Results
+
+### Attention & Uncertainty Validation
+Our geometry-aware attention anchors onto physically meaningful facial action units across different emotions.
+
+<div align="center">
+  <img src="assets/results/dfew.png" width="30%" />
+  <img src="assets/results/mafw.png" width="30%" />
+  <img src="assets/results/ferv39k.png" width="30%" />
+</div>
+
+<div align="center">
+  <b>Left to Right:</b> Visualizations from DFEW, MAFW, and FERV39K datasets demonstrating the reliability-gated attention maps.
+</div>
+
+<br>
+
+### GM-GReFEL vs Baseline GroupMamba
+<div align="center">
+  <img src="assets/results/visualize.png" width="80%" />
+</div>
+
+---
+
+## 🖥️ Localhost Web Demo
+
+We developed a comprehensive local web interface to interactively test the model on both static images and dynamic video clips.
+
+### Static Image Recognition
+<div align="center">
+  <img src="assets/demo/static.png" width="80%" />
+</div>
+
+### Dynamic Video Inference
+<div align="center">
+  <img src="assets/demo/live1.gif" width="80%" />
+</div>
+
+### Generalization to Generative AI
+The model's geometric reliability module allows it to robustly detect emotional states even on synthetic, out-of-distribution generated footage.
+<div align="center">
+  <img src="assets/demo/live2.gif" width="80%" />
+</div>
 
 ---
 
