@@ -142,22 +142,6 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 
 ---
 
-## 🖼️ Qualitative Results
-
-### Attention & Uncertainty Validation
-Our geometry-aware attention anchors onto physically meaningful facial action units across different emotions.
-
-![DFEW](assets/results/dfew.png)
-![MAFW](assets/results/mafw.png)
-![FERV39K](assets/results/ferv39k.png)
-
-**Top to Bottom:** Visualizations from DFEW, MAFW, and FERV39K datasets demonstrating the reliability-gated attention maps.
-
-### GM-GReFEL vs Baseline GroupMamba
-
-![Visual Comparison](assets/results/visualize.png)
-
----
 
 ## 🖥️ Localhost Web Demo
 
