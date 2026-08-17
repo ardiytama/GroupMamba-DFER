@@ -25,16 +25,16 @@ Recognizing emotion from continuous, unconstrained video is bottlenecked by two 
 ## 🏗️ Architecture
 
 ### Overall Workflow
-![Overall Workflow Diagram](assets/architecture/overall_workflow.png)
+![Overall Workflow Diagram](https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/architecture/overall_workflow.png)
 
 ### Detailed Architecture
 <div align="center">
-  <img src="assets/architecture/workflow_diagram.png" width="100%" />
+  <img src="https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/architecture/workflow_diagram.png" width="100%" />
 </div>
 
 ### VSSS Block
 <div align="center">
-  <img src="assets/architecture/workflow_vsss.png" width="100%" />
+  <img src="https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/architecture/workflow_vsss.png" width="100%" />
 </div>
 
 ---
@@ -148,9 +148,9 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 Our geometry-aware attention anchors onto physically meaningful facial action units across different emotions.
 
 <div align="center">
-  <img src="./assets/results/dfew.png" width="30%" />
-  <img src="./assets/results/mafw.png" width="30%" />
-  <img src="./assets/results/ferv39k.png" width="30%" />
+  <img src="https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/results/dfew.png" width="30%" />
+  <img src="https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/results/mafw.png" width="30%" />
+  <img src="https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/results/ferv39k.png" width="30%" />
 </div>
 
 <div align="center">
@@ -161,7 +161,7 @@ Our geometry-aware attention anchors onto physically meaningful facial action un
 
 ### GM-GReFEL vs Baseline GroupMamba
 <div align="center">
-  <img src="./assets/results/visualize.png" width="80%" />
+  <img src="https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/results/visualize.png" width="80%" />
 </div>
 
 ---
@@ -172,18 +172,18 @@ We developed a comprehensive local web interface to interactively test the model
 
 ### Static Image Recognition
 <div align="center">
-  <img src="./assets/demo/static.png" width="80%" />
+  <img src="https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/demo/static.png" width="80%" />
 </div>
 
 ### Dynamic Video Inference
 <div align="center">
-  <img src="./assets/demo/live1_small.gif" width="80%" />
+  <img src="https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/demo/live1_small.gif" width="80%" />
 </div>
 
 ### Generalization to Generative AI
 The model's geometric reliability module allows it to robustly detect emotional states even on synthetic, out-of-distribution generated footage.
 <div align="center">
-  <img src="./assets/demo/live2_small.gif" width="80%" />
+  <img src="https://github.com/ardiytama/GroupMamba-DFER/raw/main/assets/demo/live2_small.gif" width="80%" />
 </div>
 
 ---
