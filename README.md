@@ -143,25 +143,6 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 ---
 
 
-## 🖥️ Localhost Web Demo
-
-We developed a comprehensive local web interface to interactively test the model on both static images and dynamic video clips.
-
-### Static Image Recognition
-
-![Static Image Demo](assets/demo/static.png)
-
-### Dynamic Video Inference
-
-![Dynamic Video Demo](assets/demo/live1_small.gif)
-
-### Generalization to Generative AI
-The model's geometric reliability module allows it to robustly detect emotional states even on synthetic, out-of-distribution generated footage.
-
-![Generative AI Demo](assets/demo/live2_small.gif)
-
----
-
 ## 📝 Citation
 If you find this code or our paper useful in your research, please consider citing our work:
 
