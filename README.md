@@ -162,22 +162,19 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 A local web interface was built to interactively test the model, supporting both **static image** and **dynamic video** inputs.
 
 ### Static Image Recognition
-
 > Upload any image and the model predicts the emotion in real time.
 
-![Static Demo](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/demo-static.png)
+<img src="https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/demo-static.png" width="700"/>
 
 ### Dynamic Video Inference
-
 > The demo runs frame-by-frame inference on live or recorded video clips.
 
-![Live Demo](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/demo-live1.gif)
+<img src="https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/demo-live1-orig.gif" width="700"/>
 
 ### Generalization to Generative AI Imagery
-
 > The model's geometry-aware reliability module generalizes robustly to **synthetic, AI-generated faces** — demonstrating strong out-of-distribution detection capabilities.
 
-![AI Generalization Demo](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/demo-live2.gif)
+<img src="https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/demo-live2-orig.gif" width="700"/>
 
 ---
 
