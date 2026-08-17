@@ -147,22 +147,15 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 ### Attention & Uncertainty Validation
 Our geometry-aware attention anchors onto physically meaningful facial action units across different emotions.
 
-<div align="center">
-  <img src="assets/results/dfew.png" width="30%" />
-  <img src="assets/results/mafw.png" width="30%" />
-  <img src="assets/results/ferv39k.png" width="30%" />
-</div>
+![DFEW](assets/results/dfew.png)
+![MAFW](assets/results/mafw.png)
+![FERV39K](assets/results/ferv39k.png)
 
-<div align="center">
-  <b>Left to Right:</b> Visualizations from DFEW, MAFW, and FERV39K datasets demonstrating the reliability-gated attention maps.
-</div>
-
-<br>
+**Top to Bottom:** Visualizations from DFEW, MAFW, and FERV39K datasets demonstrating the reliability-gated attention maps.
 
 ### GM-GReFEL vs Baseline GroupMamba
-<div align="center">
-  <img src="assets/results/visualize.png" width="80%" />
-</div>
+
+![Visual Comparison](assets/results/visualize.png)
 
 ---
 
@@ -171,20 +164,17 @@ Our geometry-aware attention anchors onto physically meaningful facial action un
 We developed a comprehensive local web interface to interactively test the model on both static images and dynamic video clips.
 
 ### Static Image Recognition
-<div align="center">
-  <img src="assets/demo/static.png" width="80%" />
-</div>
+
+![Static Image Demo](assets/demo/static.png)
 
 ### Dynamic Video Inference
-<div align="center">
-  <img src="assets/demo/live1_small.gif" width="80%" />
-</div>
+
+![Dynamic Video Demo](assets/demo/live1_small.gif)
 
 ### Generalization to Generative AI
 The model's geometric reliability module allows it to robustly detect emotional states even on synthetic, out-of-distribution generated footage.
-<div align="center">
-  <img src="assets/demo/live2_small.gif" width="80%" />
-</div>
+
+![Generative AI Demo](assets/demo/live2_small.gif)
 
 ---
 
