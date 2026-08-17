@@ -141,6 +141,45 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 
 ---
 
+## 🖼️ Qualitative Results
+
+> Visualizations are from the master thesis evaluation — showing the reliability-gated attention maps anchoring onto meaningful facial regions across all three benchmarks.
+
+### Per-Dataset Sample Predictions
+
+| DFEW | MAFW | FERV39K |
+|:----:|:----:|:-------:|
+| ![DFEW](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/dfew-result.png) | ![MAFW](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/mafw-result.png) | ![FERV39K](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/ferv39k-result.png) |
+
+### GM-GReFEL vs Baseline GroupMamba
+
+![Visual Comparison](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/visualize.png)
+
+---
+
+## 🖥️ Web Demo
+
+A local web interface was built to interactively test the model, supporting both **static image** and **dynamic video** inputs.
+
+### Static Image Recognition
+
+> Upload any image and the model predicts the emotion in real time.
+
+![Static Demo](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/demo-static.png)
+
+### Dynamic Video Inference
+
+> The demo runs frame-by-frame inference on live or recorded video clips.
+
+![Live Demo](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/demo-live1.gif)
+
+### Generalization to Generative AI Imagery
+
+> The model's geometry-aware reliability module generalizes robustly to **synthetic, AI-generated faces** — demonstrating strong out-of-distribution detection capabilities.
+
+![AI Generalization Demo](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/demo-live2.gif)
+
+---
 
 ## 📝 Citation
 If you find this code or our paper useful in your research, please consider citing our work:
