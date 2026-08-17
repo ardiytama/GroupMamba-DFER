@@ -26,15 +26,15 @@ Recognizing emotion from continuous, unconstrained video is bottlenecked by two 
 
 ### Overall Workflow
 
-![Overall Workflow Diagram](assets/architecture/overall_workflow.png)
+![Overall Workflow Diagram](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/overall.workflow.diagram.png)
 
 ### Detailed Architecture
 
-![Detailed Architecture](assets/architecture/workflow_diagram.png)
+![Detailed Architecture](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/workflow.diagram.png)
 
 ### VSSS Block
 
-![VSSS Block](assets/architecture/workflow_vsss.png)
+![VSSS Block](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/workflow.VSSS.png)
 
 ---
 
