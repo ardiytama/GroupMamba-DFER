@@ -112,6 +112,8 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 
 ## 📈 Main Results
 
+> All results are reported as **mean ± std** across 5-fold cross-validation unless stated otherwise.
+
 ### DFEW (5-Fold Cross-Validation)
 | Method | Backbone | UAR (%) | WAR (%) |
 |--------|----------|---------|---------|
@@ -120,7 +122,9 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 | A3lign-DFER | CLIP-ViT-L/14 | 64.0 | 74.2 |
 | HiCMAE | ViT-B/16 | 63.7 | 75.0 |
 | S4D | ViT-B/16 | 66.8 | 76.6 |
-| **GM-GReFEL (Ours)** | **GroupMamba-T** | **67.02** | **77.14** |
+| **GM-GReFEL (Ours)** | **GroupMamba-T** | **63.62 ± 2.33** | **75.40 ± 1.42** |
+
+> 🏆 Peak single-fold (Fold 5): **67.02% UAR / 77.14% WAR**
 
 ### FERV39K (5-Fold Cross-Validation)
 | Method | Backbone | UAR (%) | WAR (%) |
@@ -129,7 +133,9 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 | A3lign-DFER | CLIP-ViT-L/14 | 41.8 | 51.7 |
 | MAE-DFER | ViT-B/16 | 43.1 | 52.0 |
 | S4D | ViT-B/16 | 43.4 | 53.6 |
-| **GM-GReFEL (Ours)** | **GroupMamba-T** | **43.59** | **53.77** |
+| **GM-GReFEL (Ours)** | **GroupMamba-T** | **41.99 ± 0.98** | **52.62 ± 0.71** |
+
+> 🏆 Peak single-fold (Split 3): **43.59% UAR / 53.77% WAR**
 
 ### MAFW (5-Fold Cross-Validation)
 | Method | Backbone | UAR (%) | WAR (%) |
@@ -137,7 +143,9 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 | HiCMAE | ViT-B/16 | 42.65 | 56.17 |
 | MAE-DFER | ViT-B/16 | 41.62 | 54.31 |
 | S4D | ViT-B/16 | 43.72 | 58.44 |
-| **GM-GReFEL (Ours)** | **GroupMamba-T** | **45.66** | **62.27** |
+| **GM-GReFEL (Ours)** | **GroupMamba-T** | **38.90 ± 5.65** | **54.37 ± 6.35** |
+
+> 🏆 Peak single-fold (Split 4): **45.66% UAR / 62.27% WAR** — MAFW exhibits high inter-split variance due to in-the-wild class distribution differences across splits; the 5-fold mean is the statistically rigorous figure.
 
 ---
 
