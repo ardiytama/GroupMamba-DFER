@@ -9,11 +9,29 @@ $^{1}$ National Taiwan University of Science and Technology (NTUST), Taiwan
 [![Paper](https://img.shields.io/badge/Paper-IEEE%20TIP-blue)](#)
 [![Models](https://img.shields.io/badge/Models-HuggingFace-orange)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ardiytama/GroupMamba-DFER/blob/main/GM_GReFEL_Demo.ipynb)
 
 </div>
 
 ## 🚀 News
+- **(Sep 2026):** Interactive Colab demo released — try GM-GReFEL in your browser with one click!
 - **(Aug 2026):** Training, evaluation code, and pre-trained models for GM-GReFEL are released.
+
+## 🎮 Interactive Demo
+
+> Try GM-GReFEL directly in your browser — no installation required!
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ardiytama/GroupMamba-DFER/blob/main/GM_GReFEL_Demo.ipynb)
+
+**The demo supports:**
+- 📷 **Static image** — upload any face photo
+- 🎬 **Video upload** — upload a short video clip (MP4/AVI)
+- 📹 **Webcam** — capture a live snapshot from your camera
+
+Each inference returns:
+- 🎯 Predicted emotion with confidence scores
+- 🔥 GradCAM attention map (which facial regions drive the prediction)
+- 🧬 GM-GReFEL geometry landmark overlay (colour-coded face mesh)
 
 ## 📄 Abstract
 Video-based emotion recognition faces two obstacles that most architectures treat separately, even though they compound each other: self-attention scales quadratically with sequence length, forcing a trade-off between clip length and GPU memory, while the crowdsourced labels behind most in-the-wild datasets carry enough disagreement that ordinary cross-entropy training ends up memorizing the noise. GM-GReFEL is built to close both gaps at once. Its backbone, a Modulated GroupMamba engine, replaces the spatiotemporal Vision Transformer entirely: latent channels are split into six groups, four scanned across spatial directions and two across time via a Visual Single Selective Scan, giving the extractor linear, $\mathcal{O}(N)$, complexity, with a Channel Affinity Modulation gate restoring communication between the otherwise-isolated groups after every layer. Above this backbone, a Geometry-Aware Reliable Facial Expression Learning module reads the network's own predictive entropy and uses it as a live mixing weight between the statistical classification head and a bank of trainable geometric anchors encoding each emotion's characteristic facial deformation, so the model leans on anatomy precisely when its own confidence signals the pixels alone cannot be trusted. Training is bootstrapped through a Static-to-Dynamic weight transfer and stabilized with a Triple Loss that keeps emotion prototypes apart in the latent space. Evaluated under 5-fold cross-validation, the architecture reaches 67.18% UAR / 76.70% WAR on DFEW, 41.89% UAR / 52.75% WAR on FERV39k, and 45.56% UAR / 62.27% WAR on MAFW — improvements of +9.73, +5.95, and +3.83 points in unweighted recall over the strongest prior published results, each confirmed significant by paired t-tests ($p < 0.01$). Grad-CAM attention maps and $t$-SNE projections of the learned feature space point to the same conclusion: the reliability module keeps attention anchored to anatomically meaningful regions rather than incidental background cues, and it does so without a practical cost, since inference latency stays essentially level with a ViT-B/16 baseline (47.4 ms vs. 46.8 ms per clip) despite the added geometric machinery.
