@@ -145,7 +145,7 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 
 ## 🖼️ Qualitative Results
 
-> Visualizations are from the master thesis evaluation — showing the reliability-gated attention maps anchoring onto meaningful facial regions across all three benchmarks.
+> Visualizations are from the journal evaluation — showing the reliability-gated attention maps anchoring onto meaningful facial regions across all three benchmarks.
 
 ### Per-Dataset Sample Predictions
 
