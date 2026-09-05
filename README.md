@@ -9,7 +9,7 @@ $^{1}$ National Taiwan University of Science and Technology (NTUST), Taiwan
 [![Paper](https://img.shields.io/badge/Paper-IEEE%20TIP-blue)](#)
 [![Models](https://img.shields.io/badge/Models-HuggingFace-orange)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ardiytama/GroupMamba-DFER/blob/main/GM_GReFEL_Demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MR6B3_ywpE2KK_hssA1C_QaZhxR4xcXM?usp=sharing)
 
 </div>
 
@@ -21,7 +21,7 @@ $^{1}$ National Taiwan University of Science and Technology (NTUST), Taiwan
 
 > Try GM-GReFEL directly in your browser — no installation required!
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ardiytama/GroupMamba-DFER/blob/main/GM_GReFEL_Demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MR6B3_ywpE2KK_hssA1C_QaZhxR4xcXM?usp=sharing)
 
 **The demo supports:**
 - 📷 **Static image** — upload any face photo
