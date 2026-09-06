@@ -23,6 +23,9 @@ $^{1}$ National Taiwan University of Science and Technology (NTUST), Taiwan
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Nn2KP9cVAT9t7SE8_DWj0SxSIr8LsYsk?usp=sharing)
 
+*(Fallback Live Server: If the Colab notebook is unavailable, you can temporarily access the live RTX 3090 lab server directly at [https://childless-repeated-ripcord.ngrok-free.dev](https://childless-repeated-ripcord.ngrok-free.dev))*
+
+
 **The demo supports:**
 - 📷 **Static image** — upload any face photo
 - 🎬 **Video upload** — upload a short video clip (MP4/AVI)
