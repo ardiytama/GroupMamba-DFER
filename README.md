@@ -174,7 +174,7 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
 |:----:|:----:|:-------:|
 | ![DFEW](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/dfew-result.png) | ![MAFW](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/mafw-result.png) | ![FERV39K](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/ferv39k-result.png) |
 
-### GM-GReFEL vs Baseline GroupMamba
+### Visual Correlation for GM-GReFEL (Base, Anchor-Landmark, Attention Heatmaps)
 
 ![Visual Comparison](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/visualize.png)
 
