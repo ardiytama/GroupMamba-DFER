@@ -48,12 +48,12 @@ Video-based emotion recognition faces two obstacles that most architectures trea
 
 <div align="center">
   <h3>Overall Workflow</h3>
-  <img src="assets/overall_workflow.png" alt="Overall Workflow Diagram" width="850"/>
+  <img src="assets/overall_workflow.png" alt="Overall Workflow Diagram"/>
   
   <br><br>
   
   <h3>VSSS Block</h3>
-  <img src="assets/workflow_vsss.png" alt="VSSS Block" width="550"/>
+  <img src="assets/workflow_vsss.png" alt="VSSS Block"/>
 </div>
 
 ---
@@ -218,7 +218,7 @@ This work builds upon the fantastic foundations provided by:
 - [S4D / VideoMAE](https://github.com/MCG-NJU/VideoMAE) - MAE pre-training for video
 - [VMamba](https://github.com/MzeroMiko/VMamba) - Selective scan CUDA kernel
 - [GReFEL](https://arxiv.org/abs/2409.10545) - Geometric Reliability Facial Expression Learning
-- [PTH-Net](https://github.com/lm495455/PTH-Net)
+- [PTH-Net](https://github.com/lm495455/PTH-Net) - Dynamic Facial Expression Recognition without Face Detection and Alignment
 
 <br>
 
