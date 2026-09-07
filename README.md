@@ -4,7 +4,8 @@
 
 **Yudhistira Arditya Pratama**$^{1}$, **Yi-Zeng Hsieh**$^{1}$
 
-$^{1}$ National Taiwan University of Science and Technology (NTUST), Taiwan
+$^{1}$ National Taiwan University of Science and Technology (NTUST), Taiwan<br>
+$^{1}$ Computational Intelligence and Human-Computer Interaction Lab (<a href="https://cihci.ee.ntust.edu.tw/ver190813/">CIHCI Lab</a>) NTUST
 
 [![Paper](https://img.shields.io/badge/Paper-IEEE%20TIP-blue)](#)
 [![Models](https://img.shields.io/badge/Models-HuggingFace-orange)](#)
@@ -45,17 +46,15 @@ Video-based emotion recognition faces two obstacles that most architectures trea
 
 ## 🏗️ Architecture
 
-### Overall Workflow
-
-![Overall Workflow Diagram](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/overall.workflow.diagram.png)
-
-### Detailed Architecture
-
-![Detailed Architecture](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/workflow.diagram.png)
-
-### VSSS Block
-
-![VSSS Block](https://github.com/ardiytama/GroupMamba-DFER/releases/download/v1.0-assets/workflow.VSSS.png)
+<div align="center">
+  <h3>Overall Workflow</h3>
+  <img src="assets/overall_workflow.png" alt="Overall Workflow Diagram" width="850"/>
+  
+  <br><br>
+  
+  <h3>VSSS Block</h3>
+  <img src="assets/workflow_vsss.png" alt="VSSS Block" width="550"/>
+</div>
 
 ---
 
@@ -87,7 +86,7 @@ pip install .
 Please follow the instructions below to prepare the datasets for training and evaluation.
 
 - **DFEW**: Download from the [official DFEW page](https://dfew-dataset.github.io/).
-- **FERV39K**: Download from the [FERV39K page](https://wangyanckxx.github.io/Proj/CVPR2022_FERV39k.html).
+- **FERV39K**: Download from the [FERV39K page](https://wangyanckxx.github.io/Proj_CVPR2022_FERV39k.html).
 - **MAFW**: Download from the [MAFW page](https://mafw-database.github.io/MAFW/).
 
 Use the provided scripts in `tools/` to generate the required `.csv` annotations.
@@ -219,3 +218,10 @@ This work builds upon the fantastic foundations provided by:
 - [S4D / VideoMAE](https://github.com/MCG-NJU/VideoMAE) - MAE pre-training for video
 - [VMamba](https://github.com/MzeroMiko/VMamba) - Selective scan CUDA kernel
 - [GReFEL](https://arxiv.org/abs/2409.10545) - Geometric Reliability Facial Expression Learning
+- [PTH-Net](https://github.com/lm495455/PTH-Net)
+
+<br>
+
+<div align="center">
+  <b>&copy; Trademark <a href="https://cihci.ee.ntust.edu.tw/ver190813/">CIHCI Lab</a></b>
+</div>
