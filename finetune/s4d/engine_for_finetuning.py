@@ -14,7 +14,35 @@ import pickle
 def train_class_batch(model, samples, target, criterion):
     outputs = model(samples)
     if isinstance(outputs, (tuple, list)):
-        loss = criterion(outputs[0], target) + outputs[1] * 0.05
+        if len(outputs) == 3:
+            # Triple Loss for GM-GReFEL: (logits, features, anchors)
+            logits, features, anchors = outputs
+            loss_cls = criterion(logits, target)
+            
+            # Prototype Separation Loss (keep anchors apart)
+            anchors_norm = torch.nn.functional.normalize(anchors, p=2, dim=-1)
+            sim_matrix = torch.matmul(anchors_norm, anchors_norm.T)
+            # Penalize high similarity between different anchors
+            mask = torch.eye(sim_matrix.size(0), device=sim_matrix.device).bool()
+            sim_matrix = sim_matrix.masked_fill(mask, -1.0)
+            loss_orth = sim_matrix.mean()
+
+            # Center Loss (pull features to anchors)
+            # Handle smoothed targets (mixup) if target is 2D
+            if target.ndim == 2:
+                labels = target.argmax(dim=1)
+            else:
+                labels = target
+            
+            batch_anchors = anchors_norm[labels]
+            features_norm = torch.nn.functional.normalize(features, p=2, dim=-1)
+            loss_center = 1.0 - torch.sum(features_norm * batch_anchors, dim=-1).mean()
+            
+            loss = loss_cls + 0.1 * loss_orth + 0.1 * loss_center
+            outputs = logits
+        else:
+            loss = criterion(outputs[0], target) + outputs[1] * 0.05
+            outputs = outputs[0]
     else:
         loss = criterion(outputs, target) 
     return loss, outputs
@@ -171,8 +199,12 @@ def validation_one_epoch(data_loader, model, device):
         with torch.cuda.amp.autocast():
             output = model(videos)
             if isinstance(output, (tuple, list)):
-                loss = criterion(output[0], target) + output[1] * 0.1
-                output=output[0]
+                if len(output) == 3:
+                    output = output[0]
+                    loss = criterion(output, target)
+                else:
+                    loss = criterion(output[0], target) + output[1] * 0.1
+                    output=output[0]
             else:
                 loss = criterion(output, target)
 
@@ -235,6 +267,8 @@ def sfer_validation_one_epoch(data_loader, model, device):
         # compute output
         with torch.cuda.amp.autocast():
             output = model(videos)
+            if isinstance(output, (tuple, list)):
+                output = output[0]
             loss = criterion(output, target)
 
         acc1, acc5 = accuracy(output, target, topk=(1, 5))
@@ -307,8 +341,12 @@ def final_test(data_loader, model, device, file, save_feature=False):
                 output = model(videos)
 
             if isinstance(output, (tuple, list)):
-                loss = criterion(output[0], target) + output[1] * 0.1
-                output=output[0]
+                if len(output) == 3:
+                    output = output[0]
+                    loss = criterion(output, target)
+                else:
+                    loss = criterion(output[0], target) + output[1] * 0.1
+                    output=output[0]
             else:
                 loss = criterion(output, target)
 

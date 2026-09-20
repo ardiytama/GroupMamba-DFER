@@ -1,7 +1,7 @@
 #!/bin/bash
 # Fine-tuning script for FERV39K dataset (local setup) - 5-Fold Cross Validation
 # Usage: bash scripts/FERV39K/ft_moe_ferv39k_local_5fold.sh [model] [device] [moe_type] [num_experts] [top_k] [moe_layers] [split]
-# Example: bash scripts/FERV39K/ft_moe_ferv39k_local_5fold.sh vitmoe_base_patch16_160 0 moe_adapters 8 2 6 1
+# Example: bash scripts/FERV39K/ft_moe_ferv39k_local_5fold.sh gm_grefel_base 0 moe_adapters 8 2 6 1
 
 pretrain_dataset='voxcelebv2+affectnet'
 finetune_dataset='ferv39k'
@@ -9,7 +9,7 @@ num_labels=7
 ckpts=(checkpoints/pretrain/voxceleb2+AffectNet/vit_base_voxceleb2+affectnet_100.pt)
 input_size=160
 sr=1
-model=${1:-vitmoe_base_patch16_160}
+model=${1:-gm_grefel_base}
 device=${2:-0}
 moe_type=${3:-moe_adapters}
 num_experts=${4:-8}

@@ -36,6 +36,7 @@ from utils import NativeScalerWithGradNormCount as NativeScaler
 from utils import multiple_samples_collate
 import utils as utils
 import s4d.videomae
+import models.gm_grefel
 
 
 from data.torch_dataset import TorchDataset
