@@ -45,10 +45,10 @@ do
         mkdir -p $OUTPUT_DIR
     fi
 
-    # Data paths (using the custom 5-folds)
-    DATA_PATH="/mnt/disk_6tb/Theo/dataset/Dynamic/FERV39K/2_ClipsforFaceCrop/2_ClipsforFaceCrop"
-    TRAIN_LABEL="/mnt/disk_6tb/Theo/dataset/Dynamic/FERV39K/Annotation/5_folds/train/set_${split}.csv"
-    TEST_LABEL="/mnt/disk_6tb/Theo/dataset/Dynamic/FERV39K/Annotation/5_folds/test/set_${split}.csv"
+    # Data paths (Update these to your local dataset paths)
+    DATA_PATH="data/FERV39K/2_ClipsforFaceCrop/2_ClipsforFaceCrop"
+    TRAIN_LABEL="data/FERV39K/Annotation/5_folds/train/set_${split}.csv"
+    TEST_LABEL="data/FERV39K/Annotation/5_folds/test/set_${split}.csv"
     MODEL_PATH="${ckpt}"
 
     echo "Model path: ${MODEL_PATH}"
@@ -61,7 +61,7 @@ do
     echo "GPU: ${device}"
 
     # batch_size can be adjusted according to number of GPUs
-    CUDA_VISIBLE_DEVICES=$device /home/cihci/miniconda3/envs/S4D/bin/python \
+    CUDA_VISIBLE_DEVICES=$device python \
         s4d/run_class_finetuning.py \
         --model ${model} \
         --data_set FERV39k \

@@ -89,7 +89,7 @@ Please follow the instructions below to prepare the datasets for training and ev
 - **FERV39K**: Download from the [FERV39K page](https://wangyanckxx.github.io/Proj_CVPR2022_FERV39k.html).
 - **MAFW**: Download from the [MAFW page](https://mafw-database.github.io/MAFW/).
 
-Use the provided scripts in `tools/` to generate the required `.csv` annotations.
+Ensure your dataset directories are formatted with the standard train/test split CSVs as provided by their respective official authors. Before running the training scripts, update the `DATA_PATH`, `TRAIN_LABEL`, and `TEST_LABEL` variables in the `finetune/scripts/` bash files to point to your local dataset directories.
 
 ### 3. Model Weights
 

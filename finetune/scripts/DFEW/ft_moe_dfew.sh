@@ -41,10 +41,10 @@ do
         mkdir -p "$OUTPUT_DIR"
     fi
 
-    # Absolute paths for DFEW
-    DATA_PATH="/mnt/disk_6tb/Theo/dataset/Dynamic/DFEW/Clip/clip_224x224_16f"
-    TRAIN_LABEL="/mnt/disk_6tb/Theo/dataset/Dynamic/DFEW/EmoLabel_DataSplit/train(single-labeled)/set_${split}.csv"
-    TEST_LABEL="/mnt/disk_6tb/Theo/dataset/Dynamic/DFEW/EmoLabel_DataSplit/test(single-labeled)/set_${split}.csv"
+    # Data paths for DFEW (Update these to your local dataset paths)
+    DATA_PATH="data/DFEW/Clip/clip_224x224_16f"
+    TRAIN_LABEL="data/DFEW/EmoLabel_DataSplit/train(single-labeled)/set_${split}.csv"
+    TEST_LABEL="data/DFEW/EmoLabel_DataSplit/test(single-labeled)/set_${split}.csv"
     MODEL_PATH="${ckpt}"
 
     echo "Model path: ${MODEL_PATH}"
@@ -56,7 +56,7 @@ do
     echo "Mode: ${mode}"
     echo "GPU: ${device}"
 
-    CUDA_VISIBLE_DEVICES=$device /home/cihci/miniconda3/envs/S4D/bin/python \
+    CUDA_VISIBLE_DEVICES=$device python \
         s4d/run_class_finetuning.py \
         --model ${model} \
         --data_set DFEW \
