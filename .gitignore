@@ -1,0 +1,71 @@
+# Standard Python ignores
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE / OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Deep Learning specific
+*.pth
+*.pt
+*.ckpt
+*.weights
+*.h5
+*.hdf5
+saved/
+logs/
+tensorboard/
+wandb/
+finetune/checkpoints/**/*.pt
+finetune/checkpoints/**/*.pth
+
+# Repository-specific cleanup (local scripts and heavy artifacts)
+release_upload/
+aggressively_compress_gifs.py
+compress_gifs.py
+fix_urls.py
+fix_urls_private.py
+
+# Ignore any log files
+*.log
