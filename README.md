@@ -204,11 +204,14 @@ A local web interface was built to interactively test the model, supporting both
 If you find this code or our paper useful in your research, please consider citing our work:
 
 ```bibtex
-@article{pratama2026gmgrefel,
-  title     = {GM-GReFEL: A Geometry-Aware Spatiotemporal State-Space Architecture for Dynamic Facial Expression Recognition in the Wild},
-  author    = {Pratama, Yudhistira Arditya and Hsieh, Yi-Zeng},
-  journal   = {IEEE Transactions on Image Processing (TIP)},
-  year      = {2026}
+@misc{pratama2026gmgrefel,
+  title         = {GM-GReFEL: A Geometry-Aware Spatiotemporal State-Space Architecture for Dynamic Facial Expression Recognition in the Wild},
+  author        = {Pratama, Yudhistira Arditya and Hsieh, Yi-Zeng},
+  year          = {2026},
+  eprint        = {TBD},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  note          = {Under review}
 }
 ```
 
