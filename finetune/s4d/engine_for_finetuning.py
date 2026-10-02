@@ -18,14 +18,11 @@ def train_class_batch(model, samples, target, criterion):
             # Triple Loss for GM-GReFEL: (logits, features, anchors)
             logits, features, anchors = outputs
             loss_cls = criterion(logits, target)
-            
-            # Prototype Separation Loss (keep anchors apart)
-            anchors_norm = torch.nn.functional.normalize(anchors, p=2, dim=-1)
-            sim_matrix = torch.matmul(anchors_norm, anchors_norm.T)
-            # Penalize high similarity between different anchors
-            mask = torch.eye(sim_matrix.size(0), device=sim_matrix.device).bool()
-            sim_matrix = sim_matrix.masked_fill(mask, -1.0)
-            loss_orth = sim_matrix.mean()
+
+            # Anchor orthogonality: ||A A^T - I||_F^2
+            anchors = anchors.float()
+            eye = torch.eye(anchors.size(0), device=anchors.device)
+            loss_orth = ((anchors @ anchors.T - eye) ** 2).sum()
 
             # Center Loss (pull features to anchors)
             # Handle smoothed targets (mixup) if target is 2D
@@ -33,12 +30,12 @@ def train_class_batch(model, samples, target, criterion):
                 labels = target.argmax(dim=1)
             else:
                 labels = target
-            
-            batch_anchors = anchors_norm[labels]
-            features_norm = torch.nn.functional.normalize(features, p=2, dim=-1)
-            loss_center = 1.0 - torch.sum(features_norm * batch_anchors, dim=-1).mean()
-            
-            loss = loss_cls + 0.1 * loss_orth + 0.1 * loss_center
+
+            # 0.5 * ||v_e - a_y||^2, averaged over the batch
+            loss_center = 0.5 * ((features.float() - anchors[labels]) ** 2).sum(dim=-1).mean()
+
+            # L_total = L_cls + lambda1 * L_anchor + lambda2 * L_center, lambda1 = lambda2 = 10
+            loss = loss_cls + 10.0 * loss_orth + 10.0 * loss_center
             outputs = logits
         else:
             loss = criterion(outputs[0], target) + outputs[1] * 0.05

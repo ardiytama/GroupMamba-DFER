@@ -2,16 +2,16 @@ server=4090
 pretrain_dataset='voxcelebv2+affectnet'
 finetune_dataset='mafw+affectnet-7'
 num_labels=11
-ckpts=(checkpoints/pretrain/voxceleb2+AffectNet/vit_base_voxceleb2+affectnet_100.pt)
-input_size=160
+ckpts=(checkpoints/pretrain/gm_grefel_2d.pth)
+input_size=224
 sr=4
 model=$1
 model_dir="${model}_server${pretrain_server}"
 
 splits=(1 2 3 4 5) # you can change it to other folds, e.g., (2,3,4,5)
-lr=1e-5
+lr=1e-4
 epochs=100
-BATCH_SIZE=16
+BATCH_SIZE=1
 
 # mtl setting
 sfer_data_set='affectnet-7'
@@ -51,7 +51,7 @@ do
         --data_path ${DATA_PATH} \
         --train_label_path ${TRAIN_LABEL} \
         --test_label_path ${TEST_LABEL} \
-        --finetune ${MODEL_PATH} \
+        --s2d_ckpt ${MODEL_PATH} \
         --log_dir ${OUTPUT_DIR} \
         --output_dir ${OUTPUT_DIR} \
         --batch_size ${BATCH_SIZE} \
@@ -63,6 +63,9 @@ do
         --sampling_rate ${sr} \
         --opt adamw \
         --lr ${lr} \
+        --smoothing 0 \
+        --mixup 0 \
+        --cutmix 0 \
         --opt_betas 0.9 0.999 \
         --weight_decay 0.05 \
         --epochs ${epochs} \

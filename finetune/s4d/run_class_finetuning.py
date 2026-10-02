@@ -166,6 +166,10 @@ def get_args():
     # Finetuning params
     parser.add_argument('--finetune', default='',
                         help='finetune from checkpoint')
+    parser.add_argument('--s2d_ckpt', default='',
+                        help='2D model checkpoint for Static-to-Dynamic transfer')
+    parser.add_argument('--s2d_warmup_epochs', default=35, type=int)
+    parser.add_argument('--s2d_gamma', default=0.01, type=float)
     parser.add_argument('--model_key', default='model|module', type=str)
     parser.add_argument('--model_prefix', default='', type=str)
     parser.add_argument('--init_scale', default=0.001, type=float)
@@ -572,6 +576,12 @@ def main(local_rank, nprocs, args, ds_init):
         utils.load_state_dict(model, checkpoint_model,
                               prefix=args.model_prefix)
 
+    s2d_inherited = set()
+    if args.s2d_ckpt:
+        ckpt_2d = torch.load(args.s2d_ckpt, map_location='cpu')
+        ckpt_2d = ckpt_2d.get('model', ckpt_2d.get('module', ckpt_2d))
+        s2d_inherited = models.gm_grefel.load_s2d_checkpoint(model, ckpt_2d)
+
     model.to(device)
 
     model_ema = None
@@ -594,7 +604,6 @@ def main(local_rank, nprocs, args, ds_init):
     # num_training_steps_per_epoch = len(dataset_train) // total_batch_size
     num_training_steps_per_epoch = len(data_loader_train.get_loader(epoch=0)) // args.update_freq
 
-    args.lr = args.lr * total_batch_size / 8
     args.min_lr = args.min_lr * total_batch_size / 256
     args.warmup_lr = args.warmup_lr * total_batch_size / 256
     print("LR = %.8f" % args.lr)
@@ -644,6 +653,20 @@ def main(local_rank, nprocs, args, ds_init):
             get_num_layer=assigner.get_layer_id if assigner is not None else None,
             get_layer_scale=assigner.get_scale if assigner is not None else None)
         loss_scaler = NativeScaler()
+
+    if s2d_inherited:
+        # S2D warm-up: damp inherited params and anchors
+        inherited_ids = {id(p) for n, p in model_without_ddp.named_parameters() if n in s2d_inherited}
+        groups = []
+        for g in optimizer.param_groups:
+            rest = [p for p in g['params'] if id(p) not in inherited_ids]
+            inh = [p for p in g['params'] if id(p) in inherited_ids]
+            if rest:
+                groups.append({**g, 'params': rest})
+            if inh:
+                scale = g.get('lr_scale', 1.0)
+                groups.append({**g, 'params': inh, 'lr_scale': scale * args.s2d_gamma, 's2d_scale': scale})
+        optimizer.param_groups = groups
 
     print("Use step level LR scheduler!")
     lr_schedule_values = utils.cosine_scheduler(
@@ -726,6 +749,10 @@ def main(local_rank, nprocs, args, ds_init):
 
     best_epoch, sfer_best_epoch = None, None
     for epoch in range(args.start_epoch, args.epochs):
+        if s2d_inherited and epoch >= args.s2d_warmup_epochs:
+            for g in optimizer.param_groups:
+                if 's2d_scale' in g:
+                    g['lr_scale'] = g['s2d_scale']
         # if args.distributed:
         #     data_loader_train.sampler.set_epoch(epoch)
         if log_writer is not None:

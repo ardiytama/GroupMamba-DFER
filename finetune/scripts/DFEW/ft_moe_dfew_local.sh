@@ -5,8 +5,8 @@
 pretrain_dataset='voxcelebv2+affectnet'
 finetune_dataset='dfew'
 num_labels=7
-ckpts=(checkpoints/pretrain/voxceleb2+AffectNet/vit_base_voxceleb2+affectnet_100.pt)
-input_size=160
+ckpts=(checkpoints/pretrain/gm_grefel_2d.pth)
+input_size=224
 sr=4
 model=${1:-gm_grefel_base}
 device=${2:-0}
@@ -17,13 +17,13 @@ moe_layers=${6:-6}
 split=${7:-1}
 
 model_dir="${model}"
-lr=1e-5
+lr=1e-4
 epochs=100
-BATCH_SIZE=8
+BATCH_SIZE=1
 dfer_data_rate=1
 
 # Use joint mode to enable AffectNet SFER for multi-task learning (MTL)
-mode=joint
+mode=dfer
 
 # Additional parameters to match paper's default configuration (run.sh)
 sfer_data_rate=0.5
@@ -64,7 +64,7 @@ do
         --data_path "${DATA_PATH}" \
         --train_label_path "${TRAIN_LABEL}" \
         --test_label_path "${TEST_LABEL}" \
-        --finetune ${MODEL_PATH} \
+        --s2d_ckpt ${MODEL_PATH} \
         --log_dir "${OUTPUT_DIR}" \
         --output_dir "${OUTPUT_DIR}" \
         --batch_size ${BATCH_SIZE} \
@@ -76,6 +76,9 @@ do
         --sampling_rate ${sr} \
         --opt adamw \
         --lr ${lr} \
+        --smoothing 0 \
+        --mixup 0 \
+        --cutmix 0 \
         --opt_betas 0.9 0.999 \
         --weight_decay 0.05 \
         --epochs ${epochs} \
@@ -83,7 +86,7 @@ do
         --test_num_segment 2 \
         --test_num_crop 2 \
         --num_workers 0 \
-        --sfer_data_set affectnet-7 \
+        --sfer_data_set none \
         --sfer_data_rate ${sfer_data_rate} \
         --mode ${mode} \
         --dfer_data_rate ${dfer_data_rate} \
