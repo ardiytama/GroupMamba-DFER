@@ -7,7 +7,6 @@
 $^{1}$ National Taiwan University of Science and Technology (NTUST), Taiwan<br>
 $^{1}$ Computational Intelligence and Human-Computer Interaction Lab (<a href="https://cihci.ee.ntust.edu.tw/ver190813/">CIHCI Lab</a>) NTUST
 
-[![Paper](https://img.shields.io/badge/Paper-IEEE%20TIP-blue)](#)
 [![Models](https://img.shields.io/badge/Models-HuggingFace-orange)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_EFqWpxBvnw5fYziKk_JXCi7Du8Op4y8?usp=sharing)
