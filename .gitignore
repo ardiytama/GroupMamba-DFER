@@ -69,3 +69,6 @@ fix_urls_private.py
 
 # Ignore any log files
 *.log
+
+# graphify output (contains local absolute paths)
+graphify-out/
