@@ -185,7 +185,7 @@ class GReFELModule(nn.Module):
 
 class GMGReFELVideo(nn.Module):
     """
-    GM-GReFEL: A Geometry-Aware Spatiotemporal State-Space Architecture
+    GM-GReFEL: Geometry-Guided Spatiotemporal State-Space Learning
     """
     def __init__(self, num_classes=7, dim=96, depth=3, num_frames=16, input_size=224,
                  tubelet=(2, 4, 4), d_state=16, drop=0.5):

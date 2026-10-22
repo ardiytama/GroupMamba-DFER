@@ -1,6 +1,6 @@
 <div align="center">
 
-# GM-GReFEL: A Geometry-Aware Spatiotemporal State-Space Architecture for Dynamic Facial Expression Recognition in the Wild
+# GM-GReFEL: Geometry-Guided Spatiotemporal State-Space Learning for Robust Dynamic Facial Expression Recognition
 
 **Yudhistira Arditya Pratama**$^{1}$, **Yi-Zeng Hsieh**$^{1}$
 
@@ -208,7 +208,7 @@ If you find this code or our paper useful in your research, please consider citi
 
 ```bibtex
 @misc{pratama2026gmgrefel,
-  title         = {GM-GReFEL: A Geometry-Aware Spatiotemporal State-Space Architecture for Dynamic Facial Expression Recognition in the Wild},
+  title         = {GM-GReFEL: Geometry-Guided Spatiotemporal State-Space Learning for Robust Dynamic Facial Expression Recognition},
   author        = {Pratama, Yudhistira Arditya and Hsieh, Yi-Zeng},
   year          = {2026},
   eprint        = {TBD},
