@@ -24,6 +24,8 @@ $^{1}$ Computational Intelligence and Human-Computer Interaction Lab (<a href="h
 
 *(Fallback Live Server: If the Colab notebook is unavailable, you can temporarily access the live RTX 3090 lab server directly at [https://childless-repeated-ripcord.ngrok-free.dev](https://childless-repeated-ripcord.ngrok-free.dev))*
 
+> Demo login: username `admin` / password `1234`
+
 
 **The demo supports:**
 - 📷 **Static image** — upload any face photo
