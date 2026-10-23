@@ -95,12 +95,7 @@ Ensure your dataset directories are formatted with the standard train/test split
 
 ### 3. Model Weights
 
-The backbone is pre-trained via masked autoencoding (MAE) on VoxCeleb2 + AffectNet.
-| Checkpoint | Pre-training Data | Download |
-|------------|------------------|----------|
-| `vit_base_voxceleb2+affectnet_100.pt` | VoxCeleb2 + AffectNet | Coming soon |
-
-Place the checkpoint at: `finetune/checkpoints/pretrain/voxceleb2+AffectNet/vit_base_voxceleb2+affectnet_100.pt`
+Pre-trained 2D checkpoint and fine-tuned weights are coming soon.
 
 ---
 
