@@ -207,14 +207,14 @@ A local web interface was built to interactively test the model, supporting both
 If you find this code or our paper useful in your research, please consider citing our work:
 
 ```bibtex
-@misc{pratama2026gmgrefel,
-  title         = {GM-GReFEL: Geometry-Guided Spatiotemporal State-Space Learning for Robust Dynamic Facial Expression Recognition},
-  author        = {Pratama, Yudhistira Arditya and Hsieh, Yi-Zeng},
-  year          = {2026},
-  eprint        = {TBD},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.CV},
-  note          = {Under review}
+@misc{pratama2026gmgrefelgeometryguidedspatiotemporalstatespace,
+      title={GM-GReFEL: Geometry-Guided Spatiotemporal State-Space Learning for Robust Dynamic Facial Expression Recognition},
+      author={Yudhistira Arditya Pratama and Yi-Zeng Hsieh},
+      year={2026},
+      eprint={2610.31140},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2610.31140},
 }
 ```
 
