@@ -7,7 +7,6 @@
 $^{1}$ National Taiwan University of Science and Technology (NTUST), Taiwan<br>
 $^{1}$ Computational Intelligence and Human-Computer Interaction Lab (<a href="https://cihci.ee.ntust.edu.tw/ver190813/">CIHCI Lab</a>) NTUST
 
-[![Models](https://img.shields.io/badge/Models-HuggingFace-orange)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_EFqWpxBvnw5fYziKk_JXCi7Du8Op4y8?usp=sharing)
 
@@ -99,7 +98,7 @@ Ensure your dataset directories are formatted with the standard train/test split
 The backbone is pre-trained via masked autoencoding (MAE) on VoxCeleb2 + AffectNet.
 | Checkpoint | Pre-training Data | Download |
 |------------|------------------|----------|
-| `vit_base_voxceleb2+affectnet_100.pt` | VoxCeleb2 + AffectNet | [Link TBD] |
+| `vit_base_voxceleb2+affectnet_100.pt` | VoxCeleb2 + AffectNet | Coming soon |
 
 Place the checkpoint at: `finetune/checkpoints/pretrain/voxceleb2+AffectNet/vit_base_voxceleb2+affectnet_100.pt`
 
