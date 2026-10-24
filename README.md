@@ -127,6 +127,23 @@ bash finetune/scripts/MAFW/ft_moe_mafw.sh \
     vitmoe_base_patch16_160 0.5 1 0 moe_adapters 8 2 6 8
 ```
 
+**GM-GReFEL package (`gm_grefel/`)**
+
+Standalone implementation of the architecture in the paper (tubelet tokenization, six-group Modulated GroupMamba, GReFEL, Triple Loss, S2D transfer).
+```bash
+python tests/test_smoke.py   # self-checks, no dataset needed
+
+python -m gm_grefel.train \
+    --data_root /path/to/DFEW/Clip/clip_224x224_16f \
+    --label_dir /path/to/DFEW/EmoLabel_DataSplit \
+    --fold 1 --out saved/gm_grefel_fold1 \
+    --s2d_ckpt gm_grefel_2d.pth     # optional 2D checkpoint for S2D
+
+python -m gm_grefel.train ... --resume saved/gm_grefel_fold1/last.pth   # continue a run
+python -m gm_grefel.train ... --resume path/or/key --eval_only          # evaluate weights
+```
+`best.pth` / `last.pth` are written to `--out`. New weights can be registered in `weights/manifest.json` (see [weights/README.md](weights/README.md)) and loaded with `load_pretrained(model, "<key>")`.
+
 ---
 
 ## 📈 Main Results
